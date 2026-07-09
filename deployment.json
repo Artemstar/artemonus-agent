@@ -1,0 +1,38 @@
+{
+  "agent": {
+    "name": "ArtemOnusAgent",
+    "version": "1.0.0",
+    "ens": "artemonus.eth",
+    "type": "AI_PRICE_OBSERVER"
+  },
+  "deployments": {
+    "base": {
+      "chainId": 8453,
+      "network": "Base Mainnet",
+      "contract": "0x7bDaD7145Be9B696459643dAd13c0dfBad5e5d49",
+      "safe": "0x2626AC38bf07e8b7b2986026a12A3c7E441FB643",
+      "deployer": "0x55e5fa8F62Dc38c3A4aCE67909A7849e5B1448bF",
+      "verified": {
+        "sourcify": true,
+        "basescan": true
+      },
+      "priceFeed": {
+        "asset": "ETH/USD",
+        "address": "0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70",
+        "provider": "Chainlink"
+      }
+    }
+  },
+  "ownership": {
+    "type": "safe_multisig",
+    "threshold": "1/1",
+    "address": "0x2626AC38bf07e8b7b2986026a12A3c7E441FB643",
+    "network": "base"
+  },
+  "identity": {
+    "ens": "artemonus.eth",
+    "controller": "0x55e5fa8F62Dc38c3A4aCE67909A7849e5B1448bF",
+    "github": "https://github.com/Artemstar/artemonus-agent",
+    "veral": "https://veral.tech/b/artemonus.eth"
+  }
+}
