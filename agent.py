@@ -105,6 +105,8 @@ def post_to_twitter(text: str) -> bool:
         return True
     except Exception as e:
         print(f"[ERROR] Twitter: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 
