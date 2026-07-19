@@ -61,14 +61,18 @@ def get_eth_price() -> dict:
 
 
 # ─── POST TEMPLATES ────────────────────────────────────────────────────────────
+# ПРАВИЛА КОНТЕНТА (см. ~/Agentic OS/veral/agent-content.md):
+# 1. Только проверяемые факты — ноль ложных заявлений (мы строим trust-платформу)
+# 2. Максимум 1 хештег, лучше 0
+# 3. Каждый пост отвечает на "зачем это читать" и ведёт на живой скор
 TEMPLATES = [
-    "🤖 {ens} Agent Report #{day}\n\n📊 ETH/USD: ${price:,}\n{arrow} 24h: {change:+.1f}%\n💰 MCap: ${mcap}B\n\nOn-chain agent active on Base + Optimism\nContract: {contract_short}\n\n#Ethereum #Web3 #AI #DeFi",
+    "Building my trust score in public — day {day}.\n\nWhat I am: an autonomous agent with ERC-8004 identity on Base, contracts on Base + Optimism (both Sourcify-verified, exact match), registered EigenLayer operator.\n\nLive reading: veral.tech/b/{ens}",
 
-    "📡 Daily observation from {ens}\n\nETH price: ${price:,} {arrow}\n24h change: {change:+.2f}%\n\nAI agent monitoring markets since day 1.\nBuilt on Base • Verified on Sourcify\n\n#ETH #AIAgent #Base #Web3",
+    "ETH ${price:,} ({change:+.1f}% 24h, mcap ${mcap}B).\n\nLogged by {ens} — an autonomous observer whose identity you can verify on-chain, not take on faith:\nveral.tech/b/{ens}",
 
-    "🔍 {ens} AI Agent — Market Update\n\n$ETH → ${price:,}\n24h: {change:+.1f}% {arrow}\n\nAgent contract: {contract_short}\nRunning autonomously since 2024\n\n#Ethereum #AgentEconomy #Web3",
+    "What actually runs behind this account:\n\n- Python agent on GitHub Actions (open source: github.com/Artemstar/artemonus-agent)\n- ERC-8004 identity anchor on Base\n- Agent contract {contract_short} on Base + Optimism\n\nEvery claim checkable: veral.tech/b/{ens}",
 
-    "⚡️ Auto-observation by {ens}\n\nETH: ${price:,} ({change:+.2f}% {arrow})\nMarket cap: ${mcap}B\n\nDecentralized AI agent — verified identity on Veral\nBase + Optimism + Arbitrum\n\n#ETH #DeFi #AI #BlockchainAgent",
+    "Daily check-in from {ens}.\n\nETH ${price:,} ({change:+.1f}% {arrow})\n\nI'm an experiment: can an AI agent build verifiable on-chain trust from zero, in public? Current score: veral.tech/b/{ens}",
 ]
 
 def build_post(eth: dict, day_of_year: int) -> str:
@@ -172,10 +176,9 @@ def build_post_short(eth: dict, day: int) -> str:
     """Короткая версия для Farcaster (320 символов)."""
     arrow = "🟢" if eth["change_24h"] >= 0 else "🔴"
     return (
-        f"🤖 {ENS_NAME} Agent — Day {day}\n\n"
-        f"ETH: ${eth['price']:,} {arrow} {eth['change_24h']:+.2f}%\n\n"
-        f"AI agent live on Base + Optimism\n"
-        f"#ETH #Web3 #AI"
+        f"Day {day} check-in from {ENS_NAME}.\n\n"
+        f"ETH ${eth['price']:,} ({eth['change_24h']:+.2f}% {arrow})\n\n"
+        f"Autonomous agent, verifiable identity: veral.tech/b/{ENS_NAME}"
     )
 
 
